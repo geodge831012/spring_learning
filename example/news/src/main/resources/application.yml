@@ -10,9 +10,9 @@ spring:
   datasource:
     cls:
       driverClassName: com.mysql.cj.jdbc.Driver
-      jdbcUrl: jdbc:mysql://rm-bp1839r311808b12hdo.mysql.rds.aliyuncs.com/db_cls_news?useUnicode=true&characterEncoding=utf-8&useSSL=false
-      username: sd_dengtacj
-      password: sd_dengtacj@2019
+      jdbcUrl: jdbc:mysql://127.0.0.1/db_news?useUnicode=true&characterEncoding=utf-8&useSSL=false
+      username: root
+      password: 123456
       max-idle: 10
       max-wait: 10000
       min-idle: 3
@@ -23,9 +23,9 @@ spring:
       time-between-eviction-runs-millis: 18800
     real:
       driverClassName: com.mysql.cj.jdbc.Driver
-      jdbcUrl: jdbc:mysql://rds72oc1q3248aq19pkro.mysql.rds.aliyuncs.com/db_dengta_info?useUnicode=true&characterEncoding=utf-8&useSSL=false
-      username: dengtacj
-      password: dengtacj2015
+      jdbcUrl: jdbc:mysql://127.0.0.1/db_news?useUnicode=true&characterEncoding=utf-8&useSSL=false
+      username: root
+      password: 123456
       max-idle: 10
       max-wait: 10000
       min-idle: 1
@@ -36,9 +36,9 @@ spring:
       time-between-eviction-runs-millis: 18800
     info:
       driverClassName: com.mysql.cj.jdbc.Driver
-      jdbcUrl: jdbc:mysql://rm-bp1839r311808b12hdo.mysql.rds.aliyuncs.com/db_news?useUnicode=true&characterEncoding=utf-8&useSSL=false
-      username: sd_dengtacj
-      password: sd_dengtacj@2019
+      jdbcUrl: jdbc:mysql://127.0.0.1/db_news?useUnicode=true&characterEncoding=utf-8&useSSL=false
+      username: root
+      password: 123456
       max-idle: 10
       max-wait: 10000
       min-idle: 3
@@ -69,7 +69,7 @@ autoload:
       loadUseTimeForAutoLoad2: 0
     enable: true
     proxy-target-class: true
-    adminPassword: "sd_dengtacj@2019"
+    adminPassword: ""
 
 news:
   common:
@@ -90,6 +90,5 @@ news:
     maxStockTagNum: 3
 
 elasticsearch:
-#  ip: 47.111.64.206:9200  # 多个用逗号分隔
-   ip: 116.62.119.80:9200,47.97.204.77:9200
+   ip: 192.168.1.1:9200,192.168.1.2:9200
 
