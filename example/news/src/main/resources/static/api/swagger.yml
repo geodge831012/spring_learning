@@ -1,0 +1,449 @@
+openapi: 3.0.0
+info:
+  description: ''
+  version: 1.0.0
+  title: 节点服务
+tags:
+  - name: flash
+    description: 快讯
+  - name: stat
+    description: 首页
+  - name: machine
+    description: 机器写稿
+  - name: info
+    description: 资讯详情
+  - name: event
+    description: 事件
+  - name: recommend
+    description: 推荐
+# servers:
+#   - url: 'http://127.0.0.1:8080'
+paths:
+  /news/v1/list_news_flash:
+    post:
+      tags:
+        - flash
+      summary: 获取快讯列表
+
+      requestBody:
+        description: 请求参数
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PageListQry'
+
+      responses:
+        '200':
+          description: 成功操作
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Meta'
+  /news/v1/list_writing_news:
+    post:
+      tags:
+        - machine
+      summary: 获取机器写稿资讯列表
+
+      requestBody:
+        description: 请求参数
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewsWritingListQry'
+
+      responses:
+        '200':
+          description: 成功操作
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Meta'
+  /news/v1/list_writing_news_type:
+    post:
+      tags:
+        - machine
+      summary: 获取机器写稿资讯类型列表
+
+      responses:
+        '200':
+          description: 成功操作
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Meta'
+
+  /news/v1/get_news_info:
+    post:
+      tags:
+        - info
+      summary: 获取资讯详情
+
+      requestBody:
+        description: 请求参数
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                newsId:
+                  type: string
+                  example: "C825E8D5-5DE2-49D3-A9F9-589929F73E06"
+                  description: 资讯ID
+      responses:
+        '200':
+          description: 成功操作
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Meta'
+
+  /news/v1/list_news_related:
+    post:
+      tags:
+        - info
+      summary: 获取资讯相关新闻
+
+      requestBody:
+        description: 请求参数
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                newsId:
+                  type: string
+                  example: "6368D4A9-77C4-4DCB-B462-291BCFDBE853"
+                  description: 资讯ID
+      responses:
+        '200':
+          description: 成功操作
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Meta'
+
+  /news/v1/get_news_tag:
+    post:
+      tags:
+        - info
+      summary: 获取资讯标签
+
+      requestBody:
+        description: 请求参数
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                newsId:
+                  type: string
+                  description: 资讯ID
+                  example: "C825E8D5-5DE2-49D3-A9F9-589929F73E06"
+      responses:
+        '200':
+          description: 成功操作
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Meta'
+
+  /news/v1/get_news_stat:
+    post:
+      tags:
+        - stat
+      summary: 获取新闻统计数据
+
+      responses:
+        '200':
+          description: 成功操作
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Meta'
+
+  /news/v1/list_analysis_record_stat:
+    post:
+      tags:
+        - stat
+      summary: 获取资讯分析记录
+
+      responses:
+        '200':
+          description: 成功操作
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Meta'
+
+
+  /news/v1/list_detect_event:
+    post:
+      tags:
+        - event
+      summary: 获取未知事件
+
+      requestBody:
+        description: 请求参数
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PageListQry'
+
+      responses:
+        '200':
+          description: 成功操作
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Meta'
+
+
+  /news/v1/list_news_of_detect_event:
+    post:
+      tags:
+        - event
+      summary: 获取事件相关新闻
+
+      requestBody:
+        description: 请求参数
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/NewsDetectEventListQry"
+      responses:
+        '200':
+          description: 成功操作
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Meta'
+
+  /news/v1/list_stock_of_detect_event:
+    post:
+      tags:
+        - event
+      summary: 获取事件相关股票
+
+      requestBody:
+        description: 请求参数
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StockDetectEventListQry"
+      responses:
+        '200':
+          description: 成功操作
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Meta'
+
+  /news/v1/list_stock_history_select:
+    post:
+      tags:
+        - event
+      summary: 获取有数据的过滤选项
+
+      requestBody:
+        description: 请求参数
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                dateStr:
+                  type: string
+                  example: "2019-10-21"
+                  description: 日期
+      responses:
+        '200':
+          description: 成功操作
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Meta'
+
+  /news/v1/list_stock_history_quote:
+    post:
+      tags:
+        - event
+      summary: 获取股票历史
+
+      requestBody:
+        description: 请求参数
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StockHistoryQuoteListQry'
+      responses:
+        '200':
+          description: 成功操作
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Meta'
+
+  /news/v1/list_recommend_news:
+    post:
+      tags:
+        - recommend
+      summary: 获取推荐资讯列表
+
+      responses:
+        '200':
+          description: 成功操作
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Meta'
+
+  /news/v1/list_recommend_ann:
+    post:
+      tags:
+        - recommend
+      summary: 获取推荐公告列表
+
+      responses:
+        '200':
+          description: 成功操作
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Meta'
+
+
+components:
+  schemas:
+    Meta:
+      type: object
+      properties:
+        isSuccess:
+          type: boolean
+          description: true：成功 false：失败
+        errCode:
+          type: string
+          description: 错误码
+        errMessage:
+          type: string
+          description: 错误描述
+    PageListQry:
+      type: object
+      properties:
+        direction:
+          type: integer
+          example: 1
+          description: 拉取方向。0-新消息 1-老消息
+        startId:
+          type: string
+          example: ""
+          description: 起始ID，首次拉取时填空
+    NewsWritingListQry:
+      type: object
+      properties:
+        direction:
+          type: integer
+          example: 1
+          description: 拉取方向。0-新消息 1-老消息
+        startId:
+          type: string
+          example: ""
+          description: 起始ID，首次拉取时填空
+        newsType:
+          type: string
+          example: ""
+          description: 机器写稿新闻类型
+
+    StockDetectEventListQry:
+      type: object
+      properties:
+        direction:
+          type: integer
+          example: 1
+          description: 拉取方向。0-新消息 1-老消息
+        startId:
+          type: string
+          example: ""
+          description: 起始ID，首次拉取时填空
+        eventId:
+          type: string
+          description: 事件ID
+          example: "454"
+
+    NewsDetectEventListQry:
+      type: object
+      properties:
+        direction:
+          type: integer
+          example: 1
+          description: 拉取方向。0-新消息 1-老消息
+        startId:
+          type: string
+          example: ""
+          description: 起始ID，首次拉取时填空
+        eventId:
+          type: string
+          description: 事件ID
+          example: "454"
+
+    StockHistoryQuoteListQry:
+      type: object
+      properties:
+        stockHisList:
+          type: array
+          items:
+            type: object
+            properties:
+              dtSecCode:
+                type: string
+                example: "0001000426"
+                description: "股票代码"
+              dateStr:
+                type: string
+                description: 日期
+                example: "2019-10-21"
+        queryType:
+          type: string
+          example: 0
+          description: 事前3天:-3 | 当日:0 |事后3天:3|事后5天:5
+

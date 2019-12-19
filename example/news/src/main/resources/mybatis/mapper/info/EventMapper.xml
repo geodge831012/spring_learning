@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dengtacj.news.infrastructure.database.info.mapper.EventMapper">
+
+
+    <select id="listEventInfo" resultType="EventInfoDO" parameterType="map">
+        SELECT
+            event_id,
+            event_title,
+            news_num,
+            event_hot,
+            UNIX_TIMESTAMP(create_time ) AS create_time
+        FROM
+            t_ed_event_info
+        ORDER BY
+            create_time DESC
+        LIMIT 100
+    </select>
+
+    <select id="listKeywordInfo" resultType="EventKeywordDO" parameterType="map">
+        SELECT
+            event_id, keyword, weight, type
+        FROM
+            t_ed_event_keywords
+        limit 100
+    </select>
+
+</mapper>

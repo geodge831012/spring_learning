@@ -1,0 +1,1 @@
+package com.dengtacj.news.infrastructure.database;
