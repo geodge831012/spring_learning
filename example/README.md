@@ -7,3 +7,6 @@
 2.线程定时任务执行(Scheduled)
 
 3.数据库mysql访问获取数据
+
+# run
+java -jar ./target/news-1.0.jar 
