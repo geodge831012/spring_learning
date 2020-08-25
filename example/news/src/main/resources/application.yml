@@ -1,3 +1,11 @@
+server:
+  port: 5000
+  tomcat:
+    max-connections: 300
+    max-threads: 1000
+  servlet:
+    context-path: /datasyncserver
+
 mybatis:
   mapper-locations: classpath:mybatis/mapper/cls/*.xml
 
